@@ -35,16 +35,40 @@ public class DatabaseUtility {
     }
 
     public void checkValidEmployee(String PIN) {
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.EMPLOYEE");
 
+
+            
+            while (rs.next()){
+                String SSN = rs.getString("SSN");
+                String name = rs.getString("name");
+                String type = rs.getString("type");
+                System.out.println(SSN + "," + name);
+            }
+
+        }catch (SQLException e){
+            System.err.println(e);
+        }
     }
 
     public void addKitchenTicket() {
-
+        
     }
 
     public void addCustomerReciept() {
         
     }
 
+    public void getKitchenTicket (){
+
+    }
+
+    public void getOrderTicket
+
+    
 
 }
