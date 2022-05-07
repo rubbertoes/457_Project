@@ -28,14 +28,6 @@ public class DatabaseUtility {
         }
     }
 
-    public void getSingleMenuItem() {
-
-    }
-
-    public void getAllMenuItems() {
-
-    }
-
     public boolean checkValidEmployee(String PIN) {
 
         ArrayList<String> employee_PINS = new ArrayList<>();
@@ -63,6 +55,34 @@ public class DatabaseUtility {
         }
         
         return false;
+    }
+
+    public String getEmployeeName(String pin) {
+
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.EMPLOYEE WHERE SSN = " + pin);
+            
+            while (rs.next()){
+                String name = rs.getString("name");
+                return name;
+            }
+
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+
+        return null;
+    }
+
+    public void getSingleMenuItem() {
+
+    }
+
+    public void getAllMenuItems() {
+
     }
 
     public void addKitchenTicket() {

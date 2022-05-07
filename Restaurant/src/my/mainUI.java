@@ -28,10 +28,14 @@ import javax.swing.text.StyledDocument;
  */
 public class mainUI extends javax.swing.JFrame {
 
+    //holds employee pin from valid login 
+    public static String emp_pin;
+
     /**
      * Creates new form mainUI
      */
-    public mainUI() {
+    public mainUI(String _emp_pin) {
+        this.emp_pin = _emp_pin;
         initComponents();
         labelOrderNo1.setText(String.valueOf(orderNo));
     }
@@ -208,10 +212,12 @@ public class mainUI extends javax.swing.JFrame {
 
         paneOrder.setEditable(false);
         jScrollPane1.setViewportView(paneOrder);
+        DatabaseUtility dbu = new DatabaseUtility();
 
         labelCashier.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelCashier.setText("Cashier:");
+        labelCashier.setText("Cashier: " + dbu.getEmployeeName(emp_pin));
         labelCashier.setAlignmentX(0.5F);
+        
 
         labelOrderNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelOrderNo.setText("Order Number:");
@@ -500,7 +506,7 @@ public class mainUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainUI().setVisible(true);
+                new mainUI(emp_pin).setVisible(true);
                 
             }
         });

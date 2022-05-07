@@ -5,8 +5,11 @@ package Restaurant.src.my;
 
 public class POS_Order {
 
-    public Employee cashier;
-    public String date;
-    //public ArrayList<> menuItemsList; 
+    public String cashier_PIN;
+    
+
+    public POS_Order(String _pin) {
+        cashier_PIN = _pin;
+    }
 
 }
