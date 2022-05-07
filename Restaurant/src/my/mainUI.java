@@ -78,10 +78,16 @@ public class mainUI extends javax.swing.JFrame {
     }
     
     private void custRewards(){
-    String name = custRePane.showInputDialog( "Provide rewards number:" );
-    custRePane.showMessageDialog(null, "Entered rewards number successfully.");
+    String phone_num = custRePane.showInputDialog( "Provide rewards number:" );
+    //custRePane.showMessageDialog(null, "Entered rewards number successfully.");
     ///REPLACE WITH CHECKING IF PHONE NUMBER IS VALID IN DATABASE
-    System.out.println(name);
+
+    DatabaseUtility dbu = new DatabaseUtility();
+
+    custRePane.showMessageDialog(null, dbu.getCustomer(phone_num));    
+    
+
+    System.out.println(phone_num);
 }
     /**
      * This method is called from within the constructor to initialize the form.

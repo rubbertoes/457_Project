@@ -73,8 +73,32 @@ public class DatabaseUtility {
         }catch (SQLException e){
             System.err.println(e);
         }
-
         return null;
+    }
+
+    public String getCustomer(String phoneNumber) {
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.CUSTOMER_REWARDS WHERE phone_num = \""
+            + phoneNumber +  "\"");
+            
+            while (rs.next()){
+                String name = rs.getString("name");
+                double dollars_spent = rs.getDouble("dollars_spent");
+                double rewards_spent = rs.getDouble("rewards_spent");
+                double rewards_available = (dollars_spent - rewards_spent);
+                int _rewards_available = (int) rewards_available;
+
+                String rewards_String = "Name: " + name + " - " + _rewards_available + " Points Available";
+                return rewards_String;
+            }
+
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+        return "Couldn't find phone number";
     }
 
     public void getSingleMenuItem() {
