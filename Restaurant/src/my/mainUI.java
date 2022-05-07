@@ -1,4 +1,4 @@
-package GUI.Restaurant.src.my;
+package Restaurant.src.my;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

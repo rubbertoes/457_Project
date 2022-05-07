@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI.Restaurant.src.my;
+package Restaurant.src.my;
 
 import java.awt.CardLayout;
 import java.util.logging.Level;

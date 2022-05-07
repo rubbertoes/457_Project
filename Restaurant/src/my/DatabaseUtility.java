@@ -1,4 +1,4 @@
-package GUI.Restaurant.src.my;
+package Restaurant.src.my;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

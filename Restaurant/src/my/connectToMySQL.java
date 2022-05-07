@@ -1,4 +1,4 @@
-package GUI.Restaurant.src.my;
+package Restaurant.src.my;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

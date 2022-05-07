@@ -1,4 +1,4 @@
-package GUI.Restaurant.src.my;
+package Restaurant.src.my;
 public class Employee {
     public String name;
     public String PIN;
