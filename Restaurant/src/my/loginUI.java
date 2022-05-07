@@ -266,7 +266,7 @@ public class loginUI extends javax.swing.JFrame {
 
             
             super.dispose();
-            mainUI Info = new mainUI();
+            mainUI Info = new mainUI(temp);
             Info.setTitle("Order");
             Info.setVisible(true);
             
