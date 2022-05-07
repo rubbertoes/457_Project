@@ -13,8 +13,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
-//import GUI.Restaurant.my.mainUI;
+import java.awt.event.WindowEvent; 
 
 /**
  *
@@ -258,8 +257,11 @@ public class loginUI extends javax.swing.JFrame {
     Replace the below lines with 
     mysql database query for pin validation.
 */        
-        String pass = "1111";
-        if (temp.equals(pass)){         //SUCCESS PIN
+
+        DatabaseUtility dbu = new DatabaseUtility();
+
+        //String pass = "1111";
+        if (dbu.checkValidEmployee(temp)){         //SUCCESS PIN
  
 
             
@@ -276,7 +278,7 @@ public class loginUI extends javax.swing.JFrame {
     Replace the below lines with 
     mysql database query for pin validation.
 */        
-        else if (!temp.equals(pass)) {  //FAILED PIN
+        else{  //FAILED PIN
             paneLogin.setText(null);
             
             

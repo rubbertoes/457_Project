@@ -1,3 +1,4 @@
+package GUI.Restaurant.src.my;
 public class Menu_Item {
     
     public String name;

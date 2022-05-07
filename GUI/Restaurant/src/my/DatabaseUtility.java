@@ -1,3 +1,4 @@
+package GUI.Restaurant.src.my;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -6,6 +7,7 @@ import java.sql.Statement;
 import java.sql.*;
 import java.time.Clock;
 import java.time.ZoneId;
+import java.util.ArrayList;
 
 public class DatabaseUtility {
 
@@ -34,7 +36,10 @@ public class DatabaseUtility {
 
     }
 
-    public void checkValidEmployee(String PIN) {
+    public boolean checkValidEmployee(String PIN) {
+
+        ArrayList<String> employee_PINS = new ArrayList<>();
+
         try {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
@@ -45,14 +50,19 @@ public class DatabaseUtility {
             
             while (rs.next()){
                 String SSN = rs.getString("SSN");
-                String name = rs.getString("name");
-                String type = rs.getString("type");
-                System.out.println(SSN + "," + name);
+                employee_PINS.add(SSN);
+                //System.out.println(SSN + "," + name);
             }
 
         }catch (SQLException e){
             System.err.println(e);
         }
+
+        if(employee_PINS.contains(PIN)) {
+            return true;
+        }
+
+        return false;
     }
 
     public void addKitchenTicket() {
