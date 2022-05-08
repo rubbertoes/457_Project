@@ -29,23 +29,17 @@ public class DatabaseUtility {
     }
 
     public boolean checkValidEmployee(String PIN) {
-
         ArrayList<String> employee_PINS = new ArrayList<>();
-
         try {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
-            
             ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.EMPLOYEE");
-
-
             
             while (rs.next()){
                 String SSN = rs.getString("SSN");
                 employee_PINS.add(SSN);
                 //System.out.println(SSN + "," + name);
             }
-
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -53,12 +47,10 @@ public class DatabaseUtility {
         if(employee_PINS.contains(PIN)) {
             return true;
         }
-        
         return false;
     }
 
     public String getEmployeeName(String pin) {
-
         try {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
@@ -80,7 +72,6 @@ public class DatabaseUtility {
         try {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
-            
             ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.CUSTOMER_REWARDS WHERE phone_num = \""
             + phoneNumber +  "\"");
             
@@ -90,38 +81,72 @@ public class DatabaseUtility {
                 double rewards_spent = rs.getDouble("rewards_spent");
                 double rewards_available = (dollars_spent - rewards_spent);
                 int _rewards_available = (int) rewards_available;
-
                 String rewards_String = "Name: " + name + " - " + _rewards_available + " Points Available";
                 return rewards_String;
             }
-
         }catch (SQLException e){
             System.err.println(e);
         }
         return "Couldn't find phone number";
     }
 
-    public void getSingleMenuItem() {
+    /*
+        Given the itemNum and the name of the column, this function returns the value from the db or Null if invalid
+    */
+    public String getSingleMenuItemDataEntry(String itemNum, String attribute) {
+        //item numbers are varchars with format of 001
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT " + attribute + " FROM rschat1db.ITEMS " +
+            "WHERE item_num = \"" + itemNum + "\"");
+            
+            while (rs.next()){
+                String coulumnData = rs.getString(attribute);
+                return coulumnData;
+            }
+        }catch (SQLException e){
+            System.err.println(e);
+        }
 
+        return "Data not found";
     }
 
-    public void getAllMenuItems() {
-
+    //returns an array list of all the valid identifiable rows in the DB
+    public ArrayList<String> getAllMenuItemsNums() {
+        ArrayList<String> menuItemIdentifiers = new ArrayList<>();
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT item_num FROM rschat1db.ITEMS");
+            
+            while (rs.next()){
+                String itemNum = rs.getString("item_num");
+                menuItemIdentifiers.add(itemNum);
+            }
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+        return menuItemIdentifiers;
     }
 
-    public void addKitchenTicket() {
-        
+    public double getSingleMenuItemPrice(String itemNum) {
+        return Double.parseDouble(this.getSingleMenuItemDataEntry(itemNum, "price"));
     }
 
-    public void addCustomerReciept() {
-        
+    public String[] getListOfItemNum(String[] itemNames) {
+
+        return null;
     }
 
-    public void getKitchenTicket (){
 
-    }
+    public void addKitchenTicket() {}
 
-    public void getOrderTicket(){}
+    public void addCustomerReciept() {}
+
+    public void getKitchenTicket () {}
+
+    public void getOrderTicket() {}
 
     
 
