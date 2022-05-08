@@ -139,6 +139,10 @@ public class DatabaseUtility {
         return null;
     }
 
+    
+    public int getNewOrderNum(){
+        return 0;
+    }
 
     public void addKitchenTicket() {}
 
@@ -150,6 +154,5 @@ public class DatabaseUtility {
 
     
     public static void main(String args[]) {
-         System.out.println();
     }
 }

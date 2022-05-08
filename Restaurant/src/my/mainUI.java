@@ -124,6 +124,19 @@ public class mainUI extends javax.swing.JFrame {
         labelOrderNo1 = new javax.swing.JLabel();
         custRePane = new javax.swing.JOptionPane();
 
+
+        StyledDocument doc = paneTotal.getStyledDocument();
+        SimpleAttributeSet right = new SimpleAttributeSet();
+        StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT);
+        doc.setParagraphAttributes(0, doc.getLength(), right, false);
+        try {
+            doc.insertString(doc.getLength(), "$0.00", null);
+        } catch (BadLocationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -141,7 +154,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn2.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn2.setText("**Fries**");                                      //change back when bug is fixed
+        mainBtn2.setText(dbu.getSingleMenuItemDataEntry("002", "name"));                                      //change back when bug is fixed
         mainBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn2ActionPerformed(evt);
@@ -151,7 +164,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn3.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn3.setText("**Coke**");
+        mainBtn3.setText(dbu.getSingleMenuItemDataEntry("003", "name"));
         mainBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn3ActionPerformed(evt);
@@ -230,6 +243,7 @@ public class mainUI extends javax.swing.JFrame {
         labelOrderNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelOrderNo.setText("Order Number:");
         labelOrderNo.setAlignmentX(0.5F);
+
 
         paneTotal.setEditable(false);
         jScrollPane2.setViewportView(paneTotal);
@@ -394,9 +408,10 @@ public class mainUI extends javax.swing.JFrame {
 
 
         try {
-            updatePane("Fries");
-            updatePane1("$4.99");
-            updateTotal(4.99);
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("002", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("002", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("002"));
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -406,9 +421,9 @@ public class mainUI extends javax.swing.JFrame {
         try {
             //item 003
             DatabaseUtility dbu = new DatabaseUtility();
-            updatePane("Coke");
-            updatePane1("$2.99");
-            updateTotal(2.99);
+            updatePane(dbu.getSingleMenuItemDataEntry("003", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("003", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("003"));
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -488,7 +503,7 @@ public class mainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mainBtn9ActionPerformed
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
-        paneTotal.setText(null);
+        paneTotal.setText("$0.00");
         paneOrder.setText(null);
         paneOrder1.setText(null);
         total = 0;
@@ -497,39 +512,33 @@ public class mainUI extends javax.swing.JFrame {
     int orderNo = 1;
     private void finishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBtnActionPerformed
         orderNo += 1;
+        total = 0;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         try {
            
             String[] arryItems = (paneOrder.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
-            String[] arryPrice = (paneOrder1.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
-            for (int i = 0; i < arryPrice.length; i++){
-               arryPrice[i] = arryPrice[i].replace("$", ""); 
-            }
-            
-            //PrintUtility pu = new PrintUtility(arryItems, arryPrice, date);
-            //pu.printCustomerReceipt();
+            String[] arryPrice = (paneOrder1.getText(0, paneOrder1.getStyledDocument().getLength())).replace("$", "").split("\n");
             
 
             ////////////////CUSTOMER RECEIPT ITEMS
-            System.out.println(Arrays.toString(arryPrice)); 
-            System.out.println(Arrays.toString(arryItems));
-
-            //TESTING: print out what is attmepting to be added to the arrary
-            //System.out.println(paneOrder.getText(0, paneOrder.getStyledDocument().getLength()));
-            //System.out.println(paneOrder1.getText(0, paneOrder.getStyledDocument().getLength()));
+            //System.out.println(Arrays.toString(arryPrice)); 
+            //System.out.println(Arrays.toString(arryItems));
+            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo);
+            pu.printCustomerReceipt();
 
 
             System.out.println(formatter.format(date));
             System.out.println(orderNo);
-            paneTotal.setText(null);
+            //paneTotal.setText(null);
+            paneTotal.setText("$0.00");
             paneOrder.setText(null);
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
             
             ////////////////KITCHEN RECEIPT ITEMS
-            System.out.println(orderNo);
+            //System.out.println(orderNo);
             //System.out.println(Arrays.toString(arryItems));
             
              
