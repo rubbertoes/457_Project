@@ -234,12 +234,13 @@ public class mainUI extends javax.swing.JFrame {
 
         paneOrder1.setEditable(false);
         paneOrder1.setAutoscrolls(false);
-        paneOrder1.setMinimumSize(new java.awt.Dimension(70, 400));
-        paneOrder1.setPreferredSize(new java.awt.Dimension(50, 70));
+        paneOrder1.setMinimumSize(new java.awt.Dimension(74, 400));
+        paneOrder1.setPreferredSize(new java.awt.Dimension(74, 70));
+        
         jScrollPane3.setViewportView(paneOrder1);
 
         resetBtn.setBackground(new java.awt.Color(255, 20, 20));
-        resetBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        resetBtn.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         resetBtn.setForeground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("Reset Order");
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +250,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         finishBtn.setBackground(new java.awt.Color(255, 20, 20));
-        finishBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        finishBtn.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         finishBtn.setForeground(new java.awt.Color(255, 255, 255));
         finishBtn.setText("Finish Order");
         finishBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +267,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         completeBtn1.setBackground(new java.awt.Color(255, 20, 20));
-        completeBtn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        completeBtn1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         completeBtn1.setForeground(new java.awt.Color(255, 255, 255));
         completeBtn1.setText("Rewards");
         completeBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -288,10 +289,10 @@ public class mainUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(0, 0, 0)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2))
-                        .addGap(100, 100, 100)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(mainBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,8 +324,8 @@ public class mainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelOrderNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelCashier, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(550, 550, 550)
+                        .addComponent(labelCashier, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(440, 440, 440)
                         .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -363,10 +364,10 @@ public class mainUI extends javax.swing.JFrame {
                             .addComponent(completeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
