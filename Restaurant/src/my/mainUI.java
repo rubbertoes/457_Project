@@ -74,7 +74,7 @@ public class mainUI extends javax.swing.JFrame {
         output = String.valueOf("$"+formatter);
         paneTotal.setText(null);
         doc.insertString(doc.getLength(), output, null);
-        
+
     }
     
     private void custRewards(){
@@ -491,6 +491,7 @@ public class mainUI extends javax.swing.JFrame {
         paneTotal.setText(null);
         paneOrder.setText(null);
         paneOrder1.setText(null);
+        total = 0;
     }//GEN-LAST:event_resetBtnActionPerformed
     
     int orderNo = 1;

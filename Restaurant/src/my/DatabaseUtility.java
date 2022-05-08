@@ -149,5 +149,7 @@ public class DatabaseUtility {
     public void getOrderTicket() {}
 
     
-
+    public static void main(String args[]) {
+         System.out.println();
+    }
 }
