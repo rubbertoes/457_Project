@@ -124,6 +124,8 @@ public class mainUI extends javax.swing.JFrame {
         labelOrderNo1 = new javax.swing.JLabel();
         custRePane = new javax.swing.JOptionPane();
 
+        jScrollPane4 = new javax.swing.JScrollPane();
+        paneNotes = new javax.swing.JTextPane();
 
         StyledDocument doc = paneTotal.getStyledDocument();
         SimpleAttributeSet right = new SimpleAttributeSet();
@@ -294,6 +296,8 @@ public class mainUI extends javax.swing.JFrame {
 
         labelOrderNo1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        jScrollPane4.setViewportView(paneNotes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,8 +308,10 @@ public class mainUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(90, 90, 90)
@@ -378,12 +384,15 @@ public class mainUI extends javax.swing.JFrame {
                             .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(finishBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(completeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, 0)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -507,6 +516,7 @@ public class mainUI extends javax.swing.JFrame {
         paneOrder.setText(null);
         paneOrder1.setText(null);
         total = 0;
+        paneNotes.setText(null);
     }//GEN-LAST:event_resetBtnActionPerformed
     
     int orderNo = 1;
@@ -538,6 +548,9 @@ public class mainUI extends javax.swing.JFrame {
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
             
+            System.out.println("Order notes:" + paneNotes.getText());
+
+            paneNotes.setText(null);
             ////////////////KITCHEN RECEIPT ITEMS
             //System.out.println(orderNo);
             //System.out.println(Arrays.toString(arryItems)); 
@@ -608,6 +621,8 @@ public class mainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelCashier;
     private javax.swing.JLabel labelOrderNo;
     private javax.swing.JLabel labelOrderNo1;
@@ -621,6 +636,7 @@ public class mainUI extends javax.swing.JFrame {
     private javax.swing.JButton mainBtn7;
     private javax.swing.JButton mainBtn8;
     private javax.swing.JButton mainBtn9;
+    private javax.swing.JTextPane paneNotes;
     private javax.swing.JTextPane paneOrder;
     private javax.swing.JTextPane paneOrder1;
     private javax.swing.JTextPane paneTotal;
