@@ -524,6 +524,8 @@ public class mainUI extends javax.swing.JFrame {
             ////////////////CUSTOMER RECEIPT ITEMS
             //System.out.println(Arrays.toString(arryPrice)); 
             //System.out.println(Arrays.toString(arryItems));
+            
+            //orderNo in this file is actually the ticket number. order number will be generated in the DB utility file
             PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo);
             pu.printCustomerReceipt();
 
@@ -538,9 +540,14 @@ public class mainUI extends javax.swing.JFrame {
             
             ////////////////KITCHEN RECEIPT ITEMS
             //System.out.println(orderNo);
-            //System.out.println(Arrays.toString(arryItems));
+            //System.out.println(Arrays.toString(arryItems)); 
             
             orderNo += 1;
+
+            //reset
+            if (orderNo > 100){
+                orderNo = 1;
+            }
              
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
