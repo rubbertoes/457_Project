@@ -37,24 +37,17 @@ public class PrintUtility {
         System.out.println("Ticket Number: " + ticketNumber + "\n");
 
         for(int i = 0; i<itemNames.length; i++){
-
-            //add an extra 0 if the price is a whole number. 2.0 -> 2.00
-            //String printablePrice = itemPrices.get(i).toString();
-            //if(printablePrice.contains(".0")){
-            //    printablePrice.replace(".0", ".00");
-            //    System.out.println(printablePrice);
-            //}
-
-            //System.out.println(itemNames[i] + "\t\t\t$" + printablePrice);
-            System.out.printf("%-20s $%.2f \n", itemNames[i], itemPrices.get(i));
-
-            
+            System.out.printf("%-20s $%.2f \n", itemNames[i], itemPrices.get(i));   
         }
 
-        System.out.println("\nTotal: not yet implemented");
+        double totalPrice = 0;
+        for (double price: itemPrices){
+            totalPrice += price;
+        }
 
-        System.out.println("\n\tTaxation is theft!");
-        System.out.println("\tKaon Na Ta!");
+        System.out.println("\nTax:\t\t     Taxation is theft!");
+        System.out.printf("Total:\t\t     $%.2f", totalPrice);
+        System.out.println("\n\n\t\tKaon Na Ta!\n");
         System.out.println("Date: " + date);
         System.out.println("Order Number:"  + this.generateOrderNumber());
         System.out.println("******************************************************\n");

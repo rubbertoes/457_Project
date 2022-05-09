@@ -511,7 +511,6 @@ public class mainUI extends javax.swing.JFrame {
     
     int orderNo = 1;
     private void finishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBtnActionPerformed
-        orderNo += 1;
         total = 0;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -529,8 +528,8 @@ public class mainUI extends javax.swing.JFrame {
             pu.printCustomerReceipt();
 
 
-            System.out.println(formatter.format(date));
-            System.out.println(orderNo);
+            //System.out.println(formatter.format(date));
+            //System.out.println(orderNo);
             //paneTotal.setText(null);
             paneTotal.setText("$0.00");
             paneOrder.setText(null);
@@ -541,6 +540,7 @@ public class mainUI extends javax.swing.JFrame {
             //System.out.println(orderNo);
             //System.out.println(Arrays.toString(arryItems));
             
+            orderNo += 1;
              
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
