@@ -74,7 +74,7 @@ public class mainUI extends javax.swing.JFrame {
         output = String.valueOf("$"+formatter);
         paneTotal.setText(null);
         doc.insertString(doc.getLength(), output, null);
-        
+
     }
     
     private void custRewards(){
@@ -97,6 +97,8 @@ public class mainUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        DatabaseUtility dbu = new DatabaseUtility();
 
         mainBtn1 = new javax.swing.JButton();
         mainBtn2 = new javax.swing.JButton();
@@ -122,6 +124,21 @@ public class mainUI extends javax.swing.JFrame {
         labelOrderNo1 = new javax.swing.JLabel();
         custRePane = new javax.swing.JOptionPane();
 
+        jScrollPane4 = new javax.swing.JScrollPane();
+        paneNotes = new javax.swing.JTextPane();
+
+        StyledDocument doc = paneTotal.getStyledDocument();
+        SimpleAttributeSet right = new SimpleAttributeSet();
+        StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT);
+        doc.setParagraphAttributes(0, doc.getLength(), right, false);
+        try {
+            doc.insertString(doc.getLength(), "$0.00", null);
+        } catch (BadLocationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -129,7 +146,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn1.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn1.setText("Burger");
+        mainBtn1.setText(dbu.getSingleMenuItemDataEntry("001", "name"));
         mainBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn1ActionPerformed(evt);
@@ -139,7 +156,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn2.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn2.setText("Fries");
+        mainBtn2.setText(dbu.getSingleMenuItemDataEntry("002", "name"));                                      //change back when bug is fixed
         mainBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn2ActionPerformed(evt);
@@ -149,7 +166,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn3.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn3.setText("Coke");
+        mainBtn3.setText(dbu.getSingleMenuItemDataEntry("003", "name"));
         mainBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn3ActionPerformed(evt);
@@ -159,7 +176,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn4.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn4.setText("Item 4");
+        mainBtn4.setText(dbu.getSingleMenuItemDataEntry("004", "name"));
         mainBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn4ActionPerformed(evt);
@@ -169,7 +186,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn5.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn5.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn5.setText("Item 5");
+        mainBtn5.setText(dbu.getSingleMenuItemDataEntry("005", "name"));
         mainBtn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn5ActionPerformed(evt);
@@ -179,7 +196,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn6.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn6.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn6.setText("Item 6");
+        mainBtn6.setText(dbu.getSingleMenuItemDataEntry("006", "name"));
         mainBtn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn6ActionPerformed(evt);
@@ -189,7 +206,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn7.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn7.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn7.setText("Item 7");
+        mainBtn7.setText(dbu.getSingleMenuItemDataEntry("007", "name"));
         mainBtn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn7ActionPerformed(evt);
@@ -199,7 +216,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn8.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn8.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn8.setText("Item 8");
+        mainBtn8.setText(dbu.getSingleMenuItemDataEntry("008", "name"));
         mainBtn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn8ActionPerformed(evt);
@@ -209,7 +226,7 @@ public class mainUI extends javax.swing.JFrame {
         mainBtn9.setBackground(new java.awt.Color(20, 20, 255));
         mainBtn9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mainBtn9.setForeground(new java.awt.Color(255, 255, 255));
-        mainBtn9.setText("Item 9");
+        mainBtn9.setText(dbu.getSingleMenuItemDataEntry("009", "name"));
         mainBtn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainBtn9ActionPerformed(evt);
@@ -218,7 +235,7 @@ public class mainUI extends javax.swing.JFrame {
 
         paneOrder.setEditable(false);
         jScrollPane1.setViewportView(paneOrder);
-        DatabaseUtility dbu = new DatabaseUtility();
+        //DatabaseUtility dbu = new DatabaseUtility();
 
         labelCashier.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCashier.setText("Cashier: " + dbu.getEmployeeName(emp_pin));
@@ -228,6 +245,7 @@ public class mainUI extends javax.swing.JFrame {
         labelOrderNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelOrderNo.setText("Order Number:");
         labelOrderNo.setAlignmentX(0.5F);
+
 
         paneTotal.setEditable(false);
         jScrollPane2.setViewportView(paneTotal);
@@ -278,6 +296,8 @@ public class mainUI extends javax.swing.JFrame {
 
         labelOrderNo1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        jScrollPane4.setViewportView(paneNotes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,8 +308,10 @@ public class mainUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(90, 90, 90)
@@ -362,12 +384,15 @@ public class mainUI extends javax.swing.JFrame {
                             .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(finishBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(completeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, 0)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(custRePane, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -378,30 +403,36 @@ public class mainUI extends javax.swing.JFrame {
     
     private void mainBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn1ActionPerformed
         try {
-            updatePane("Burger");
-            updatePane1("$14.99");
-            updateTotal(14.99);
+            //item 001
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("001", "name"));          //name as a String 
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("001", "price"));  //$ + price as a String
+            updateTotal(dbu.getSingleMenuItemPrice("001"));                                //price as a double
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_mainBtn1ActionPerformed
 
     private void mainBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn2ActionPerformed
+
+
         try {
-            updatePane("Fries");
-            updatePane1("$4.99");
-            updateTotal(4.99);
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("002", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("002", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("002"));
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_mainBtn2ActionPerformed
 
     private void mainBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn3ActionPerformed
         try {
-            updatePane("Coke");
-            updatePane1("$2.99");
-            updateTotal(2.99);
+            //item 003
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("003", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("003", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("003"));
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -409,63 +440,127 @@ public class mainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mainBtn3ActionPerformed
 
     private void mainBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn4ActionPerformed
-        // TODO add your handling code here:
+        try {
+            //item 004
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("004", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("004", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("004"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn4ActionPerformed
 
-    private void mainBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn5ActionPerformed
-        // TODO add your handling code here:
+    private void mainBtn5ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            //item 005
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("005", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("005", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("005"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn5ActionPerformed
 
-    private void mainBtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn6ActionPerformed
-        // TODO add your handling code here:
+    private void mainBtn6ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            //item 006
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("006", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("006", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("006"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn6ActionPerformed
 
-    private void mainBtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn7ActionPerformed
-        // TODO add your handling code here:
+    private void mainBtn7ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            //item 007
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("007", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("007", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("007"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn7ActionPerformed
 
-    private void mainBtn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn8ActionPerformed
-        // TODO add your handling code here:
+    private void mainBtn8ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            //item 008
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("008", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("008", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("008"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn8ActionPerformed
 
-    private void mainBtn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtn9ActionPerformed
-        // TODO add your handling code here:
+    private void mainBtn9ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            //item 009
+            DatabaseUtility dbu = new DatabaseUtility();
+            updatePane(dbu.getSingleMenuItemDataEntry("009", "name"));
+            updatePane1("$" + dbu.getSingleMenuItemDataEntry("009", "price"));
+            updateTotal(dbu.getSingleMenuItemPrice("009"));
+        } catch (BadLocationException ex) {
+            Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mainBtn9ActionPerformed
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
-        paneTotal.setText(null);
+        paneTotal.setText("$0.00");
         paneOrder.setText(null);
         paneOrder1.setText(null);
+        total = 0;
+        paneNotes.setText(null);
     }//GEN-LAST:event_resetBtnActionPerformed
     
     int orderNo = 1;
     private void finishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBtnActionPerformed
-        orderNo += 1;
+        total = 0;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         try {
            
             String[] arryItems = (paneOrder.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
-            String[] arryPrice = (paneOrder1.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
-            for (int i = 0; i < arryPrice.length; i++){
-               arryPrice[i] = arryPrice[i].replace("$", ""); 
-            }
+            String[] arryPrice = (paneOrder1.getText(0, paneOrder1.getStyledDocument().getLength())).replace("$", "").split("\n");
             
+
             ////////////////CUSTOMER RECEIPT ITEMS
-            System.out.println(Arrays.toString(arryPrice)); 
-            System.out.println(Arrays.toString(arryItems));
-            System.out.println(formatter.format(date));
-            System.out.println(orderNo);
-            paneTotal.setText(null);
+            //System.out.println(Arrays.toString(arryPrice)); 
+            //System.out.println(Arrays.toString(arryItems));
+            
+            //orderNo in this file is actually the ticket number. order number will be generated in the DB utility file
+            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo);
+            pu.printCustomerReceipt();
+
+
+            //System.out.println(formatter.format(date));
+            //System.out.println(orderNo);
+            //paneTotal.setText(null);
+            paneTotal.setText("$0.00");
             paneOrder.setText(null);
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
             
+            System.out.println("Order notes:" + paneNotes.getText());
+
+            paneNotes.setText(null);
             ////////////////KITCHEN RECEIPT ITEMS
-            System.out.println(orderNo);
-            System.out.println(Arrays.toString(arryItems));
+            //System.out.println(orderNo);
+            //System.out.println(Arrays.toString(arryItems)); 
             
+            orderNo += 1;
+
+            //reset
+            if (orderNo > 100){
+                orderNo = 1;
+            }
              
         } catch (BadLocationException ex) {
             Logger.getLogger(mainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -526,6 +621,8 @@ public class mainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelCashier;
     private javax.swing.JLabel labelOrderNo;
     private javax.swing.JLabel labelOrderNo1;
@@ -539,6 +636,7 @@ public class mainUI extends javax.swing.JFrame {
     private javax.swing.JButton mainBtn7;
     private javax.swing.JButton mainBtn8;
     private javax.swing.JButton mainBtn9;
+    private javax.swing.JTextPane paneNotes;
     private javax.swing.JTextPane paneOrder;
     private javax.swing.JTextPane paneOrder1;
     private javax.swing.JTextPane paneTotal;

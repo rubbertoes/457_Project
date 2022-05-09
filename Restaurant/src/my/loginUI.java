@@ -263,8 +263,6 @@ public class loginUI extends javax.swing.JFrame {
         //String pass = "1111";
         if (dbu.checkValidEmployee(temp)){         //SUCCESS PIN
  
-
-            
             super.dispose();
             mainUI Info = new mainUI(temp);
             Info.setTitle("Order");
@@ -280,8 +278,6 @@ public class loginUI extends javax.swing.JFrame {
 */        
         else{  //FAILED PIN
             paneLogin.setText(null);
-            
-            
         }
     }
     
