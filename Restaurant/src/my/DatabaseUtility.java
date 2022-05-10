@@ -4,8 +4,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.sql.*;
 import java.time.Clock;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 
@@ -34,6 +36,29 @@ public class DatabaseUtility {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.EMPLOYEE");
+            
+            while (rs.next()){
+                String SSN = rs.getString("SSN");
+                employee_PINS.add(SSN);
+                //System.out.println(SSN + "," + name);
+            }
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+
+        if(employee_PINS.contains(PIN)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkValidManager(String PIN) {
+        ArrayList<String> employee_PINS = new ArrayList<>();
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rschat1db.EMPLOYEE" +
+            " WHERE type = \'Manager\'");
             
             while (rs.next()){
                 String SSN = rs.getString("SSN");
@@ -139,9 +164,54 @@ public class DatabaseUtility {
         return null;
     }
 
-    
-    public int getNewOrderNum(){
-        return 0;
+    //CONTINUE HERE
+    public int getNewOrderNum(int ticketNum){
+
+        //month + day + year + ticket num
+        //05      10    22     01
+        //05      10    23     01
+
+        LocalDate today = LocalDate.now();	//23-Feb-022
+        Integer day = today.getDayOfMonth();	//23
+        Integer month = today.getMonthValue(); 	//2
+        Integer year = today.getYear();			//2022
+
+        if(day == 1) {
+
+        }
+        else {
+
+        }
+
+        String strOrderNum = day.toString() + month.toString() + year.toString() + ticketNum;
+
+        //when there are more than 100 tickets in a month, find max from DB and add 1
+        //if(this.oneHundredOrdersThatMonth(strOrderNum)) {
+            return Integer.parseInt(strOrderNum) + 1;
+        }
+
+        return Integer.parseInt(strOrderNum);
+    }
+
+    //if the 100th order exists in the database then return true
+
+        //What if you just add 1 to what exists? will that 
+        //maybe if day == 1 then reset and form new number
+    public String getMaxOrderNum() {
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT MAX(order_num) FROM rschat1db.ORDERS");
+            
+            while (rs.next()){
+                String coulumnData = rs.getString("order_num");
+
+                return coulumnData;
+            }
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+        return null; 
     }
 
     public void addKitchenTicket() {}

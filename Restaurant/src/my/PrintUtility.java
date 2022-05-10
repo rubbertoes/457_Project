@@ -10,8 +10,10 @@ public class PrintUtility {
     private ArrayList<Double> itemPrices;
     private Date date;
     private int ticketNumber;   //pass it the ticket number too!
+    private String orderNotes; 
 
-    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum){
+    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum, 
+            String _orderNotes){
         itemNames = _itemNames;
 
         itemPrices = new ArrayList<>();
@@ -20,8 +22,8 @@ public class PrintUtility {
         }
 
         this.ticketNumber = _ticketNum;
-
-        date = _date;
+        this.date = _date;
+        this.orderNotes = _orderNotes;
     }
 
     /*
@@ -60,6 +62,19 @@ public class PrintUtility {
         Prints Kitchen Ticket in the terminal.
     */
     public void printKitchenTicket() {
+
+        System.out.println("\n******************************************************");
+        System.out.println("\t\tKITCHEN TICKET");
+        System.out.println("Ticket Number: " + ticketNumber + "\n");
+
+        for(int i = 0; i<itemNames.length; i++){
+            System.out.println(itemNames[i]);   
+        }
+        System.out.println();
+        System.out.println("NOTES:");
+        System.out.println(orderNotes);
+        System.out.println("\n******************************************************\n");
+        
 
     }
 

@@ -530,34 +530,26 @@ public class mainUI extends javax.swing.JFrame {
             String[] arryItems = (paneOrder.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
             String[] arryPrice = (paneOrder1.getText(0, paneOrder1.getStyledDocument().getLength())).replace("$", "").split("\n");
             
+            int dbNo; //call from DButility 
 
             ////////////////CUSTOMER RECEIPT ITEMS
-            //System.out.println(Arrays.toString(arryPrice)); 
-            //System.out.println(Arrays.toString(arryItems));
-            
             //orderNo in this file is actually the ticket number. order number will be generated in the DB utility file
-            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo);
+            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo, paneNotes.getText());
             pu.printCustomerReceipt();
 
+            ////////////////KITCHEN RECEIPT ITEMS
+            pu.printKitchenTicket();
 
-            //System.out.println(formatter.format(date));
-            //System.out.println(orderNo);
-            //paneTotal.setText(null);
+            //reset mainUi for next Order
             paneTotal.setText("$0.00");
             paneOrder.setText(null);
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
-            
-            System.out.println("Order notes:" + paneNotes.getText());
-
             paneNotes.setText(null);
-            ////////////////KITCHEN RECEIPT ITEMS
-            //System.out.println(orderNo);
-            //System.out.println(Arrays.toString(arryItems)); 
-            
+
             orderNo += 1;
 
-            //reset
+            //reset order num if order reaches 100
             if (orderNo > 100){
                 orderNo = 1;
             }
