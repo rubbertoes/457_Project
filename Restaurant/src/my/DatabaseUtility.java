@@ -241,7 +241,8 @@ public class DatabaseUtility {
         String _date,
         String _orderNotes,
         String _empPin,
-        int ticketNum){
+        int _ticketNum,
+        int _dbNo){
 
         //take list of food item names and return just their item_num 
         ArrayList<String> itemNum = getListOfItemNum(_allItemNames);

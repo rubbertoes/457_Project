@@ -544,9 +544,10 @@ public class mainUI extends javax.swing.JFrame {
                 //       notes
                 //       cashier pin
                 //       rewards_phone number       CANNOT ADD IN CURRENT CONFIGURATION
-                //       ticket number
+                //       ticket number == orderNo in this file
+                //       order number  == dbNo in this file
 
-            dbu.insertOrderInDB(arryItems, arryPrice, formatterForDB.format(date), paneNotes.getText(), emp_pin, orderNo);
+            dbu.insertOrderInDB(arryItems, arryPrice, formatterForDB.format(date), paneNotes.getText(), emp_pin, orderNo, dbNo);
 
 
             ////////////////CUSTOMER RECEIPT ITEMS
