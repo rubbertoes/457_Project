@@ -116,7 +116,7 @@ public class managerUI extends javax.swing.JFrame {
         jLabel3.setMinimumSize(new java.awt.Dimension(130, 20));
         jLabel3.setPreferredSize(new java.awt.Dimension(130, 20));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel4.setText("Birthday (YYYY-MM-DD):");
         jLabel4.setMaximumSize(new java.awt.Dimension(130, 20));
         jLabel4.setMinimumSize(new java.awt.Dimension(130, 20));
@@ -159,7 +159,7 @@ public class managerUI extends javax.swing.JFrame {
             }
         });
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        jLabel5.setText("Employee Pin");
+        jLabel5.setText("Employee Pin: ");
         jLabel5.setMaximumSize(new java.awt.Dimension(130, 20));
         jLabel5.setMinimumSize(new java.awt.Dimension(130, 20));
         jLabel5.setPreferredSize(new java.awt.Dimension(130, 20));
@@ -188,6 +188,7 @@ public class managerUI extends javax.swing.JFrame {
         jLabel7.setMinimumSize(new java.awt.Dimension(100, 20));
         jLabel7.setPreferredSize(new java.awt.Dimension(100, 20));
         
+        cashierBtn.setFont(new java.awt.Font("Segoe UI", 0, 11));
         cashierBtn.setText("Cashier");
         cashierBtn.setMaximumSize(new java.awt.Dimension(70, 30));
         cashierBtn.setMinimumSize(new java.awt.Dimension(70, 30));
@@ -206,9 +207,9 @@ public class managerUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelManager, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelManager, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
@@ -312,7 +313,7 @@ public class managerUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        
+        queryResults.setText(null);
         String search = querySearch.getText(); 
         // ADD SEARCH SQL HERE***
         //Make sure to replace the bottom line with the return of search*** 
@@ -324,6 +325,7 @@ public class managerUI extends javax.swing.JFrame {
         doc.setParagraphAttributes(0, doc.getLength(), left, false);
         try {
             doc.insertString(doc.getLength(), dbu.queryOrderFromDB(Integer.parseInt(search)), null);
+            querySearch.setText(null);
         } catch (NumberFormatException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -349,12 +351,19 @@ public class managerUI extends javax.swing.JFrame {
         DatabaseUtility dbu = new DatabaseUtility();
         dbu.hireEmployee(name, pin, type, dob);
 
+        paneAddName.setText(null);
+        paneAddPin.setText(null);
+        paneAddType.setText(null);
+        paneAddDOB.setText(null);
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String pin = paneDeletePin.getText();
         DatabaseUtility dbu = new DatabaseUtility();
         dbu.fireEmployee(pin);
+
+        paneDeletePin.setText(null);
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 

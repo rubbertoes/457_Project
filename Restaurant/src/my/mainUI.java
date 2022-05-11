@@ -146,7 +146,7 @@ public class mainUI extends javax.swing.JFrame {
         setResizable(false);
 
         mainBtn1.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn1.setFont(new java.awt.Font("Segoe UI", 1, 7)); // NOI18N
         mainBtn1.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn1.setText(dbu.getSingleMenuItemDataEntry("001", "name"));
         mainBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn2.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         mainBtn2.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn2.setText(dbu.getSingleMenuItemDataEntry("002", "name"));                                      //change back when bug is fixed
         mainBtn2.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn6.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn6.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
         mainBtn6.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn6.setText(dbu.getSingleMenuItemDataEntry("006", "name"));
         mainBtn6.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn7.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn7.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
         mainBtn7.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn7.setText(dbu.getSingleMenuItemDataEntry("007", "name"));
         mainBtn7.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +226,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn9.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         mainBtn9.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn9.setText(dbu.getSingleMenuItemDataEntry("009", "name"));
         mainBtn9.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +254,7 @@ public class mainUI extends javax.swing.JFrame {
 
         paneOrder1.setEditable(false);
         paneOrder1.setAutoscrolls(false);
-        paneOrder1.setMinimumSize(new java.awt.Dimension(74, 400));
+        
         paneOrder1.setPreferredSize(new java.awt.Dimension(74, 70));
         
         jScrollPane3.setViewportView(paneOrder1);
