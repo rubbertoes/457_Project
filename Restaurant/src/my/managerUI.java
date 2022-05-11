@@ -346,11 +346,15 @@ public class managerUI extends javax.swing.JFrame {
         String dob = paneAddDOB.getText();
         // ADD EMPLOYEE SQL HERE***
 
+        DatabaseUtility dbu = new DatabaseUtility();
+        dbu.hireEmployee(name, pin, type, dob);
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String pin = paneDeletePin.getText();
-        // DELETE EMPLOYEE SQL HERE***
+        DatabaseUtility dbu = new DatabaseUtility();
+        dbu.fireEmployee(pin);
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 

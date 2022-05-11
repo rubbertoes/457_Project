@@ -468,7 +468,6 @@ public class DatabaseUtility {
         //print sucess or failure in terminal 
     }
 
-    
     public static void main(String args[]) {
         DatabaseUtility dbu = new DatabaseUtility();
         dbu.queryOrderFromDB(5222);
