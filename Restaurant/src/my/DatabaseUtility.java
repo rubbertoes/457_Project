@@ -42,6 +42,7 @@ public class DatabaseUtility {
                 employee_PINS.add(SSN);
                 //System.out.println(SSN + "," + name);
             }
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -65,6 +66,7 @@ public class DatabaseUtility {
                 employee_PINS.add(SSN);
                 //System.out.println(SSN + "," + name);
             }
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -86,7 +88,7 @@ public class DatabaseUtility {
                 String name = rs.getString("name");
                 return name;
             }
-
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -109,6 +111,7 @@ public class DatabaseUtility {
                 String rewards_String = "Name: " + name + " - " + _rewards_available + " Points Available";
                 return rewards_String;
             }
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -130,6 +133,7 @@ public class DatabaseUtility {
                 String coulumnData = rs.getString(attribute);
                 return coulumnData;
             }
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -149,6 +153,7 @@ public class DatabaseUtility {
                 String itemNum = rs.getString("item_num");
                 menuItemIdentifiers.add(itemNum);
             }
+            con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -177,6 +182,7 @@ public class DatabaseUtility {
                     allItemNum.add(itemNum);
                 }
         }
+        con.close();
         }catch (SQLException e){
             System.err.println(e);
         }
@@ -264,12 +270,15 @@ public class DatabaseUtility {
     try {
 
         Connection con = DriverManager.getConnection(SERVER, ID, PW);
-        //Statement stmt = con.createStatement();
-        PreparedStatement fullOrderContents = null;
-        querys = "INSERT INTO `rschat1db`.`ORDERS` (`order_num`, `date`, `total_price`, `notes`, `cashier_pin`)" + 
-        "VALUES ('05222', '2022-05-11', '59.99', '\"note\"', '1234')";
-        fullOrderContents = con.prepareStatement(querys);
-        fullOrderContents.executeUpdate();
+        PreparedStatement prep = null;
+        querys = 
+        
+        "INSERT INTO rschat1db.ORDERS (order_num, date, total_price, notes, cashier_pin)" + 
+        "VALUES ('" + _dbNo + "', '" + _date + "', '" + totalPrice + "', '" + "\""+ _orderNotes + "\"', '" + _empPin + "')"; 
+        System.out.println(querys);
+        
+        prep = con.prepareStatement(querys);
+        prep.execute();
 
     }catch (SQLException e){
         System.err.println(e);
@@ -297,8 +306,7 @@ public class DatabaseUtility {
 
     
     public static void main(String args[]) {
-        DatabaseUtility dbu = new DatabaseUtility();
-        System.out.println(dbu.getMaxOrderNum());
-        System.out.println(dbu.getNewOrderNum(12));
+        //DatabaseUtility dbu = new DatabaseUtility();
+        //dbu.insertOrderInDB(null, null, null, null, null, null, null);
     }
 }

@@ -56,9 +56,9 @@ public class connectToMySQL {
             
         }
         
-       // querys = "UPDATE rschat1.Branch SET city = 'Baltimore' WHERE branchNo = 'B002';";
-       // updateStaff = con.prepareStatement(querys);
-       // updateStaff.executeUpdate();
+       querys = "UPDATE rschat1.Branch SET city = 'Baltimore' WHERE branchNo = 'B002';";
+       updateStaff = con.prepareStatement(querys);
+       updateStaff.executeUpdate();
     }catch (SQLException e){
         System.err.println(e);
     }
