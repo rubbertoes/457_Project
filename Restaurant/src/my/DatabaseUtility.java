@@ -251,7 +251,7 @@ public class DatabaseUtility {
         int _dbNo){
 
         //take list of food item names and return just their item_num 
-        ArrayList<String> itemNum = getListOfItemNum(_allItemNames);
+        ArrayList<String> itemNums = getListOfItemNum(_allItemNames);
 
         //take string list of all prices, convert them to doubles and find the sum
         ArrayList<Double> itemPrices = new ArrayList<>();
@@ -286,13 +286,65 @@ public class DatabaseUtility {
 
 
         //send data to CONSISTS_OF table
+        String querys1;
+        String querys2;
+        int countNumItems = 1;
     try {
+        
         Connection con = DriverManager.getConnection(SERVER, ID, PW);
+        /*
         //Statement stmt = con.createStatement();
         PreparedStatement fullOrderContents = null;
         querys = "";
         fullOrderContents = con.prepareStatement(querys);
         fullOrderContents.executeUpdate();
+        */
+
+        querys1 = "INSERT INTO rschat1db.CONSISTS_OF (ticket_num, order_num, ";
+        querys2 = " VALUES (?, ?, ";
+
+        //build two query strings
+        
+        for (String _itNum : itemNums){
+            querys1 += "item_" + countNumItems++ + ", ";
+            querys2 += "?, ";
+        }
+        //remove last comma from each string
+        StringBuffer modQuerys1 = new StringBuffer(querys1);
+        modQuerys1.deleteCharAt(modQuerys1.length()-1); 
+        modQuerys1.deleteCharAt(modQuerys1.length()-1); 
+        querys1 = "";
+        querys1 = modQuerys1.toString();
+        querys1 += ")";
+
+        StringBuffer modQuerys2 = new StringBuffer(querys2);
+        modQuerys2.deleteCharAt(modQuerys2.length()-1);
+        modQuerys2.deleteCharAt(modQuerys2.length()-1);
+        querys2 = ""; 
+        querys2 = modQuerys2.toString();
+        querys2 += ")";
+
+        querys = querys1 + querys2;
+
+        //System.out.println("Ticket NUMBER:" + _ticketNum );
+        //System.out.println("Order NUMBER:" + _dbNo);
+
+      //create the mysql insert preparedstatement
+      PreparedStatement preparedStmt = con.prepareStatement(querys);
+      preparedStmt.setString (1, Integer.toString(_ticketNum));
+      preparedStmt.setString (2, Integer.toString(_dbNo));
+
+      int prepStmCount = 3;
+      for (String _itNum : itemNums){
+        preparedStmt.setString(prepStmCount++, _itNum);
+    }
+
+    //System.out.println(querys);
+
+      // execute the preparedstatement
+    preparedStmt.execute();
+    con.close();
+
     
     }catch (SQLException e){
             System.err.println(e);
