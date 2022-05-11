@@ -417,6 +417,20 @@ public class DatabaseUtility {
         return null;
     }
 
+    //full name ex: Micheal Daly
+    //pin ex: 7777
+    //position = {Manager, Cashier}
+    //bdate format MUST Be: yyyy-mm-dd
+    public void hireEmployee(String fullName, int pin, String position, String employeeBDate) {
+
+        //print sucess or failure in terminal
+    }
+
+    public void fireEmployee(int emp_pin) {
+
+        //print sucess or failure in terminal 
+    }
+
     
     public static void main(String args[]) {
         DatabaseUtility dbu = new DatabaseUtility();
