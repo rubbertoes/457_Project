@@ -9,6 +9,8 @@ package Restaurant.src.my;
 
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Formatter;
@@ -523,7 +525,9 @@ public class mainUI extends javax.swing.JFrame {
     private void finishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBtnActionPerformed
         total = 0;
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat formatterForDB = new SimpleDateFormat("yyyy-MM-dd"); 
+        //System.out.println(formatterForDB.format(date)); 
+
         
         try {
            
@@ -539,10 +543,10 @@ public class mainUI extends javax.swing.JFrame {
                 //       date: may need to create it in the fx as format is differnt for reciepts
                 //       notes
                 //       cashier pin
-                //       rewards_phone number
+                //       rewards_phone number       CANNOT ADD IN CURRENT CONFIGURATION
                 //       ticket number
 
-            //dbu.insertOrderInDB(arrayItems, arrayPrice,);
+            dbu.insertOrderInDB(arryItems, arryPrice, formatterForDB.format(date), paneNotes.getText(), emp_pin, orderNo);
 
 
             ////////////////CUSTOMER RECEIPT ITEMS
@@ -553,14 +557,22 @@ public class mainUI extends javax.swing.JFrame {
             ////////////////KITCHEN RECEIPT ITEMS
             pu.printKitchenTicket();
 
+            //testing fx of get all item num fx
+            //System.out.println(dbu.getListOfItemNum(arryItems));
+
+            //testing date   
+
+            System.out.println( );
+
             //reset mainUi for next Order
+            orderNo += 1;
             paneTotal.setText("$0.00");
             paneOrder.setText(null);
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
             paneNotes.setText(null);
 
-            orderNo += 1;
+            //orderNo += 1;
 
             //reset order num if order reaches 100
             if (orderNo > 100){

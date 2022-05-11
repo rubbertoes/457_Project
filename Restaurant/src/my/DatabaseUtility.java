@@ -160,9 +160,27 @@ public class DatabaseUtility {
     }
 
    
-    private String[] getListOfItemNum(String[] itemNames) {
+    private ArrayList<String> getListOfItemNum(String[] itemNames) {
 
-        return null;
+        ArrayList<String> allItemNum = new ArrayList<>();
+
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+
+            for(String _itemName : itemNames){
+                ResultSet rs = stmt.executeQuery("SELECT item_num FROM rschat1db.ITEMS " +
+                "WHERE name = \"" + _itemName + "\"");
+            
+                while (rs.next()){
+                    String itemNum = rs.getString("item_num");
+                    allItemNum.add(itemNum);
+                }
+        }
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+        return allItemNum;
     }
 
     //CONTINUE HERE
@@ -209,9 +227,35 @@ public class DatabaseUtility {
         return 0; 
     }
 
-    public void insertOrderInDB(){
+
+    //needs: all item name (will be converted to item_num)
+                //       all prices (will be totaled into one double)
+                //       date: may need to create it in the fx as format is differnt for reciepts
+                //       notes
+                //       cashier pin
+                //       rewards_phone number           //not possible rn
+                //       ticket number
+    public void insertOrderInDB(
+        String[] _allItemNames, 
+        String[] _itemPrices, 
+        String _date,
+        String _orderNotes,
+        String _empPin,
+        int ticketNum){
 
         //take list of food item names and return just their item_num 
+        ArrayList<String> itemNum = getListOfItemNum(_allItemNames);
+
+        //take string list of all prices, convert them to doubles and find the sum
+        ArrayList<Double> itemPrices = new ArrayList<>();
+        for(String price :  _itemPrices){
+            itemPrices.add(Double.parseDouble(price));
+        }
+        double totalPrice = 0;
+        for (double price: itemPrices){
+            totalPrice += price;
+        }
+
 
 
         //send data to ORDER table
@@ -221,7 +265,8 @@ public class DatabaseUtility {
         Connection con = DriverManager.getConnection(SERVER, ID, PW);
         //Statement stmt = con.createStatement();
         PreparedStatement fullOrderContents = null;
-        querys = "";
+        querys = "INSERT INTO `rschat1db`.`ORDERS` (`order_num`, `date`, `total_price`, `notes`, `cashier_pin`)" + 
+        "VALUES ('05222', '2022-05-11', '59.99', '\"note\"', '1234')";
         fullOrderContents = con.prepareStatement(querys);
         fullOrderContents.executeUpdate();
 

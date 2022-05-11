@@ -79,9 +79,4 @@ public class PrintUtility {
         
 
     }
-
-    //read from database to find last used ticket number
-    public int generateTicketNumber() {
-        return 69;
-    }
 }
