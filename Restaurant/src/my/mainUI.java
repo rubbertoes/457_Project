@@ -530,11 +530,24 @@ public class mainUI extends javax.swing.JFrame {
             String[] arryItems = (paneOrder.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
             String[] arryPrice = (paneOrder1.getText(0, paneOrder1.getStyledDocument().getLength())).replace("$", "").split("\n");
             
-            int dbNo; //call from DButility 
+            DatabaseUtility dbu = new DatabaseUtility();
+            int dbNo = dbu.getNewOrderNum(orderNo); 
+
+            //send order to the DB 
+                //needs: all item name (will be converted to item_num)
+                //       all prices (will be totaled into one double)
+                //       date: may need to create it in the fx as format is differnt for reciepts
+                //       notes
+                //       cashier pin
+                //       rewards_phone number
+                //       ticket number
+
+            //dbu.insertOrderInDB(arrayItems, arrayPrice,);
+
 
             ////////////////CUSTOMER RECEIPT ITEMS
             //orderNo in this file is actually the ticket number. order number will be generated in the DB utility file
-            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo, paneNotes.getText());
+            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo, dbNo, paneNotes.getText());
             pu.printCustomerReceipt();
 
             ////////////////KITCHEN RECEIPT ITEMS

@@ -11,8 +11,9 @@ public class PrintUtility {
     private Date date;
     private int ticketNumber;   //pass it the ticket number too!
     private String orderNotes; 
+    private int orderNumber;
 
-    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum, 
+    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum, int _orderNum,
             String _orderNotes){
         itemNames = _itemNames;
 
@@ -24,6 +25,7 @@ public class PrintUtility {
         this.ticketNumber = _ticketNum;
         this.date = _date;
         this.orderNotes = _orderNotes;
+        this.orderNumber = _orderNum;
     }
 
     /*
@@ -51,7 +53,7 @@ public class PrintUtility {
         System.out.printf("Total:\t\t     $%.2f", totalPrice);
         System.out.println("\n\n\t\tKaon Na Ta!\n");
         System.out.println("Date: " + date);
-        System.out.println("Order Number:"  + this.generateOrderNumber());
+        System.out.println("Order Number:"  + orderNumber);
         System.out.println("******************************************************\n");
     }
 
@@ -76,15 +78,6 @@ public class PrintUtility {
         System.out.println("\n******************************************************\n");
         
 
-    }
-
-    /*
-        Generates a unique order number, not yet seen in the database
-    */
-    public String generateOrderNumber() {
-        //SELECT MAX()
-
-        return "00001";
     }
 
     //read from database to find last used ticket number

@@ -159,7 +159,8 @@ public class DatabaseUtility {
         return Double.parseDouble(this.getSingleMenuItemDataEntry(itemNum, "price"));
     }
 
-    public String[] getListOfItemNum(String[] itemNames) {
+   
+    private String[] getListOfItemNum(String[] itemNames) {
 
         return null;
     }
@@ -167,62 +168,91 @@ public class DatabaseUtility {
     //CONTINUE HERE
     public int getNewOrderNum(int ticketNum){
 
-        //month + day + year + ticket num
-        //05      10    22     01
-        //05      10    23     01
+        //month + year + total ticket num
+        //05      22     01
+        //05      23     01
+        //ordernum wont exactly reflect the date added, but will be random enough to increment 
 
         LocalDate today = LocalDate.now();	//23-Feb-022
-        Integer day = today.getDayOfMonth();	//23
+        Integer day =  today.getDayOfMonth();	//23
         Integer month = today.getMonthValue(); 	//2
         Integer year = today.getYear();			//2022
 
+        //if its a new month, increment to match month and year
         if(day == 1) {
-
-        }
-        else {
-
+            String strOrderNum = month.toString() + year.toString() + ticketNum;
+            return Integer.parseInt(strOrderNum);
         }
 
-        String strOrderNum = day.toString() + month.toString() + year.toString() + ticketNum;
-
-        //when there are more than 100 tickets in a month, find max from DB and add 1
-        //if(this.oneHundredOrdersThatMonth(strOrderNum)) {
-            return Integer.parseInt(strOrderNum) + 1;
-        }
-
-        return Integer.parseInt(strOrderNum);
+        //else its not a new month, just add 1 to the total orders
+        return getMaxOrderNum() + 1;
+        
     }
 
     //if the 100th order exists in the database then return true
-
         //What if you just add 1 to what exists? will that 
         //maybe if day == 1 then reset and form new number
-    public String getMaxOrderNum() {
+    private int getMaxOrderNum() {
         try {
             Connection con = DriverManager.getConnection(SERVER, ID, PW);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT MAX(order_num) FROM rschat1db.ORDERS");
             
             while (rs.next()){
-                String coulumnData = rs.getString("order_num");
+                String coulumnData = rs.getString("MAX(order_num)");
 
-                return coulumnData;
+                return Integer.parseInt(coulumnData);
             }
         }catch (SQLException e){
-            System.err.println(e);
+            System.err.println("Couldn't Find Order Number");
         }
-        return null; 
+        return 0; 
     }
 
-    public void addKitchenTicket() {}
+    public void insertOrderInDB(){
 
-    public void addCustomerReciept() {}
+        //take list of food item names and return just their item_num 
 
-    public void getKitchenTicket () {}
 
-    public void getOrderTicket() {}
+        //send data to ORDER table
+        String querys;
+    try {
+
+        Connection con = DriverManager.getConnection(SERVER, ID, PW);
+        //Statement stmt = con.createStatement();
+        PreparedStatement fullOrderContents = null;
+        querys = "";
+        fullOrderContents = con.prepareStatement(querys);
+        fullOrderContents.executeUpdate();
+
+    }catch (SQLException e){
+        System.err.println(e);
+    }
+
+
+        //send data to CONSISTS_OF table
+    try {
+        Connection con = DriverManager.getConnection(SERVER, ID, PW);
+        //Statement stmt = con.createStatement();
+        PreparedStatement fullOrderContents = null;
+        querys = "";
+        fullOrderContents = con.prepareStatement(querys);
+        fullOrderContents.executeUpdate();
+    
+    }catch (SQLException e){
+            System.err.println(e);
+    }
+
+    }
+
+    public void queryOrderFromDB(int orderNum){
+
+    }
 
     
     public static void main(String args[]) {
+        DatabaseUtility dbu = new DatabaseUtility();
+        System.out.println(dbu.getMaxOrderNum());
+        System.out.println(dbu.getNewOrderNum(12));
     }
 }
