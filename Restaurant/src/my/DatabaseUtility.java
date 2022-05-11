@@ -421,13 +421,50 @@ public class DatabaseUtility {
     //pin ex: 7777
     //position = {Manager, Cashier}
     //bdate format MUST Be: yyyy-mm-dd
-    public void hireEmployee(String fullName, int pin, String position, String employeeBDate) {
+    public void hireEmployee(String fullName, String pin, String position, String employeeBDate) 
+    {
+        String query;
+        try {
 
-        //print sucess or failure in terminal
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            PreparedStatement prep = null;
+            query = 
+            
+            "INSERT INTO rschat1db.EMPLOYEE (SSN, name, type, birthday, sex)" + 
+            "VALUES (" + "'" + pin + "'" + ","+ "'" + fullName + "', '" + position + "'," + "'"+ employeeBDate +"'"+",'" + "M" + "'" + ")"; 
+            System.out.println(query);
+            
+            prep = con.prepareStatement(query);
+            prep.execute();
+            con.close();
+
+        }catch (SQLException e){
+            System.err.println(e);
+        }
     }
 
-    public void fireEmployee(int emp_pin) {
+    public void fireEmployee(String emp_pin) {
 
+        String query;
+        try 
+        {
+
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            PreparedStatement prep = null;
+            query = 
+            
+            "DELETE FROM rschat1db.EMPLOYEE " + "WHERE SSN =" + "'" + emp_pin +"'";
+            System.out.println(query);
+            
+            prep = con.prepareStatement(query);
+            prep.execute();
+            con.close();
+
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e);
+        }
         //print sucess or failure in terminal 
     }
 
