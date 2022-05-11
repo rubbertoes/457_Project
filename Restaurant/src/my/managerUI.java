@@ -4,6 +4,10 @@
  */
 package Restaurant.src.my;
 
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+
 /**
  *
  * @author Connor
@@ -18,6 +22,7 @@ public class managerUI extends javax.swing.JFrame {
     public managerUI( String _emp_pin) {
         emp_pin = _emp_pin;
         initComponents();
+        
     }
 
     /**
@@ -28,7 +33,7 @@ public class managerUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        DatabaseUtility dbu = new DatabaseUtility();
         searchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         querySearch = new javax.swing.JTextPane();
@@ -37,8 +42,27 @@ public class managerUI extends javax.swing.JFrame {
         labelManager = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         queryResults = new javax.swing.JTextPane();
-
-        DatabaseUtility dbu = new DatabaseUtility();
+        logoutBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        paneAddName = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        paneAddPin = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        paneAddType = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        paneAddDOB = new javax.swing.JTextPane();
+        btnAdd = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        paneDeletePin = new javax.swing.JTextPane();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cashierBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,14 +76,125 @@ public class managerUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(querySearch);
 
         paneManager.setEditable(false);
+        
+        paneManager.setText(dbu.getEmployeeName(emp_pin));
         jScrollPane2.setViewportView(paneManager);
 
         labelManager.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelManager.setText("Manager: " + dbu.getEmployeeName(emp_pin));
+        labelManager.setText("Manager:");
 
         queryResults.setEditable(false);
         queryResults.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(queryResults);
+
+        logoutBtn.setText("Logout");
+        logoutBtn.setMaximumSize(new java.awt.Dimension(70, 30));
+        logoutBtn.setMinimumSize(new java.awt.Dimension(70, 30));
+        logoutBtn.setPreferredSize(new java.awt.Dimension(70, 30));
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Employee Full Name:");
+        jLabel1.setMaximumSize(new java.awt.Dimension(130, 20));
+        jLabel1.setMinimumSize(new java.awt.Dimension(130, 20));
+        jLabel1.setPreferredSize(new java.awt.Dimension(130, 20));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Employee Pin:");
+        jLabel2.setMaximumSize(new java.awt.Dimension(130, 20));
+        jLabel2.setMinimumSize(new java.awt.Dimension(130, 20));
+        jLabel2.setPreferredSize(new java.awt.Dimension(130, 20));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Employee Type:");
+        jLabel3.setMaximumSize(new java.awt.Dimension(130, 20));
+        jLabel3.setMinimumSize(new java.awt.Dimension(130, 20));
+        jLabel3.setPreferredSize(new java.awt.Dimension(130, 20));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Birthday (YYYY-MM-DD):");
+        jLabel4.setMaximumSize(new java.awt.Dimension(130, 20));
+        jLabel4.setMinimumSize(new java.awt.Dimension(130, 20));
+        jLabel4.setPreferredSize(new java.awt.Dimension(130, 20));
+
+        paneAddName.setMaximumSize(new java.awt.Dimension(100, 20));
+        paneAddName.setMinimumSize(new java.awt.Dimension(100, 20));
+        paneAddName.setPreferredSize(new java.awt.Dimension(100, 20));
+        jScrollPane4.setViewportView(paneAddName);
+
+        paneAddPin.setMaximumSize(new java.awt.Dimension(100, 20));
+        paneAddPin.setMinimumSize(new java.awt.Dimension(100, 20));
+        paneAddPin.setPreferredSize(new java.awt.Dimension(100, 20));
+        jScrollPane5.setViewportView(paneAddPin);
+
+        jScrollPane6.setMaximumSize(new java.awt.Dimension(100, 20));
+        jScrollPane6.setMinimumSize(new java.awt.Dimension(100, 20));
+        jScrollPane6.setPreferredSize(new java.awt.Dimension(100, 20));
+
+        paneAddType.setAutoscrolls(false);
+        paneAddType.setMaximumSize(new java.awt.Dimension(100, 20));
+        paneAddType.setMinimumSize(new java.awt.Dimension(100, 20));
+        paneAddType.setPreferredSize(new java.awt.Dimension(100, 20));
+        jScrollPane6.setViewportView(paneAddType);
+
+        jScrollPane7.setMaximumSize(new java.awt.Dimension(100, 20));
+        jScrollPane7.setMinimumSize(new java.awt.Dimension(100, 20));
+        jScrollPane7.setPreferredSize(new java.awt.Dimension(100, 20));
+
+        paneAddDOB.setAutoscrolls(false);
+        paneAddDOB.setMaximumSize(new java.awt.Dimension(100, 20));
+        paneAddDOB.setMinimumSize(new java.awt.Dimension(100, 20));
+        paneAddDOB.setPreferredSize(new java.awt.Dimension(100, 20));
+        jScrollPane7.setViewportView(paneAddDOB);
+
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        jLabel5.setText("Employee Pin");
+        jLabel5.setMaximumSize(new java.awt.Dimension(130, 20));
+        jLabel5.setMinimumSize(new java.awt.Dimension(130, 20));
+        jLabel5.setPreferredSize(new java.awt.Dimension(130, 20));
+
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        paneDeletePin.setMaximumSize(new java.awt.Dimension(100, 20));
+        paneDeletePin.setMinimumSize(new java.awt.Dimension(100, 20));
+        paneDeletePin.setPreferredSize(new java.awt.Dimension(100, 20));
+        jScrollPane8.setViewportView(paneDeletePin);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setText("Add Employee");
+        jLabel6.setMaximumSize(new java.awt.Dimension(100, 20));
+        jLabel6.setMinimumSize(new java.awt.Dimension(100, 20));
+        jLabel6.setPreferredSize(new java.awt.Dimension(100, 20));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setText("Delete Employee");
+        jLabel7.setMaximumSize(new java.awt.Dimension(100, 20));
+        jLabel7.setMinimumSize(new java.awt.Dimension(100, 20));
+        jLabel7.setPreferredSize(new java.awt.Dimension(100, 20));
+        
+        cashierBtn.setText("Cashier");
+        cashierBtn.setMaximumSize(new java.awt.Dimension(70, 30));
+        cashierBtn.setMinimumSize(new java.awt.Dimension(70, 30));
+        cashierBtn.setPreferredSize(new java.awt.Dimension(70, 30));
+        cashierBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashierBtnActionPerformed(evt);
+            }} );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,42 +202,158 @@ public class managerUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelManager, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelManager, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
                         .addComponent(searchBtn)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(0, 0, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane8)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(20, 20, 20)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(logoutBtn)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cashierBtn)
+                        .addGap(20, 20, 20)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(labelManager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(logoutBtn)
+                .addGap(10, 10, 10)
+                .addComponent(cashierBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(labelManager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchBtn)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addComponent(btnAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addComponent(btnDelete))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // ADD SEARCH SQL HERE
+        
+        String search = querySearch.getText(); 
+        // ADD SEARCH SQL HERE***
+        //Make sure to replace the bottom line with the return of search*** 
+        StyledDocument doc = queryResults.getStyledDocument();
+        SimpleAttributeSet left = new SimpleAttributeSet();
+        StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT);
+        doc.setParagraphAttributes(0, doc.getLength(), left, false);
+        //doc.insertString(doc.getLength(), !!!!!!!REPLACE THIS WITH RETURN OF SEARCH!!!!!!'\n', null);
     }//GEN-LAST:event_searchBtnActionPerformed
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        super.dispose();
+        loginUI Info = new loginUI();
+        Info.setTitle("Login");
+        Info.setVisible(true);
+    }
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        String name = paneAddName.getText();
+        String pin = paneAddPin.getText();
+        String type = paneAddType.getText();
+        String dob = paneAddDOB.getText();
+        // ADD EMPLOYEE SQL HERE***
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String pin = paneDeletePin.getText();
+        // DELETE EMPLOYEE SQL HERE***
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void cashierBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        //DatabaseUtility dUtility = new DatabaseUtility();
+        //String temp = dUtility.getEmployeeName(temp);
+                        //Database query to either check current pin (idk if thats possible) ***
+                        //or query search based on paneManager.getText() (will be manager name) to find his pin***
+        super.dispose();
+        mainUI Info = new mainUI(emp_pin);   //Uncomment once temp is set ***
+        Info.setTitle("Login");             //Uncomment once temp is set ***
+        Info.setVisible(true);              //Uncomment once temp is set ***
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -140,10 +391,31 @@ public class managerUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton cashierBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel labelManager;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JTextPane paneAddDOB;
+    private javax.swing.JTextPane paneAddName;
+    private javax.swing.JTextPane paneAddPin;
+    private javax.swing.JTextPane paneAddType;
+    private javax.swing.JTextPane paneDeletePin;
     private javax.swing.JTextPane paneManager;
     private javax.swing.JTextPane queryResults;
     private javax.swing.JTextPane querySearch;
