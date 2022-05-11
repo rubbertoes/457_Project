@@ -352,13 +352,75 @@ public class DatabaseUtility {
 
     }
 
-    public void queryOrderFromDB(int orderNum){
+    public String queryOrderFromDB(Integer orderNum){
 
+        ArrayList<String> orderItemsNums = new ArrayList<>();
+        int numItem = 1;
+
+        try {
+            Connection con = DriverManager.getConnection(SERVER, ID, PW);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(
+            "SELECT order_num, ticket_num, item_1, item_2, item_3, item_4, item_5, " +
+            "item_6, item_7, item_8, item_9, item_10, item_11, item_12, item_13, " +
+            "item_14, item_15, item_16, item_17, item_18, item_19, item_20, item_21, " +
+            "item_22, item_23, item_24, item_25, item_26, item_27, item_28, item_29, " +
+            "item_30, date, total_price, notes, name " +                     
+            "FROM rschat1db.CONSISTS_OF " +
+            "NATURAL JOIN rschat1db.ORDERS " +
+            "JOIN rschat1db.EMPLOYEE " + 
+            "ON cashier_pin = SSN " +
+            "WHERE order_num = \"" + orderNum + "\"");
+            
+            while (rs.next()){
+                String order_num = rs.getString("order_num");
+                String ticket_num = rs.getString("ticket_num");
+                String menuItemName = rs.getString("item_" + numItem++);
+                orderItemsNums.add(menuItemName);
+                
+                //once menuItem = null, there are no more items in the order
+                while(menuItemName != null){
+                    menuItemName = rs.getString("item_" + numItem++);
+                    orderItemsNums.add(menuItemName);
+                }
+
+                String date  = rs.getString("date");
+                Double totalPrice = rs.getDouble("total_price");
+                String notes = rs.getString("notes");
+                String cashier_name = rs.getString("name");
+
+                //return as one long string
+                String queryDisplay = "";
+                queryDisplay += "DETAILS FROM ORDER " + orderNum + "\n";
+                queryDisplay += "TICKET NUMBER: " + ticket_num + "\n";
+                queryDisplay += "PLACED ON: " + date + "\n";
+                queryDisplay += "ADDED BY: " + cashier_name + "\n\n";
+                queryDisplay += "WITH ITEMS: \n";
+                for(String menuItem : orderItemsNums){
+                    if(menuItem == null){
+                        break;
+                    }
+                    queryDisplay += getSingleMenuItemDataEntry(menuItem, "name") + "\n";
+                }
+                queryDisplay += "\nPRICE PAID: " + totalPrice + "\n";
+                queryDisplay += "ADDITIONAL INFORMATION: " + notes; 
+
+                //System.out.println(queryDisplay);
+
+                return queryDisplay;
+            }
+            con.close();
+        }catch (SQLException e){
+            System.err.println(e);
+        }
+
+        return null;
     }
 
     
     public static void main(String args[]) {
-        //DatabaseUtility dbu = new DatabaseUtility();
-        //dbu.insertOrderInDB(null, null, null, null, null, null, null);
+        DatabaseUtility dbu = new DatabaseUtility();
+        dbu.queryOrderFromDB(5222);
+        
     }
 }

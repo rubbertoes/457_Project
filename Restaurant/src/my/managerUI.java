@@ -4,6 +4,7 @@
  */
 package Restaurant.src.my;
 
+import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -315,11 +316,21 @@ public class managerUI extends javax.swing.JFrame {
         String search = querySearch.getText(); 
         // ADD SEARCH SQL HERE***
         //Make sure to replace the bottom line with the return of search*** 
+        DatabaseUtility dbu = new DatabaseUtility();
+
         StyledDocument doc = queryResults.getStyledDocument();
         SimpleAttributeSet left = new SimpleAttributeSet();
         StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT);
         doc.setParagraphAttributes(0, doc.getLength(), left, false);
-        //doc.insertString(doc.getLength(), !!!!!!!REPLACE THIS WITH RETURN OF SEARCH!!!!!!'\n', null);
+        try {
+            doc.insertString(doc.getLength(), dbu.queryOrderFromDB(Integer.parseInt(search)), null);
+        } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (BadLocationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         super.dispose();
