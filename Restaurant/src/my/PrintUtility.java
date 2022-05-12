@@ -10,8 +10,11 @@ public class PrintUtility {
     private ArrayList<Double> itemPrices;
     private Date date;
     private int ticketNumber;   //pass it the ticket number too!
+    private String orderNotes; 
+    private int orderNumber;
 
-    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum){
+    public PrintUtility(String[] _itemNames, String[] _itemPrices, Date _date, int _ticketNum, int _orderNum,
+            String _orderNotes){
         itemNames = _itemNames;
 
         itemPrices = new ArrayList<>();
@@ -20,8 +23,9 @@ public class PrintUtility {
         }
 
         this.ticketNumber = _ticketNum;
-
-        date = _date;
+        this.date = _date;
+        this.orderNotes = _orderNotes;
+        this.orderNumber = _orderNum;
     }
 
     /*
@@ -49,7 +53,7 @@ public class PrintUtility {
         System.out.printf("Total:\t\t     $%.2f", totalPrice);
         System.out.println("\n\n\t\tKaon Na Ta!\n");
         System.out.println("Date: " + date);
-        System.out.println("Order Number:"  + this.generateOrderNumber());
+        System.out.println("Order Number:"  + orderNumber);
         System.out.println("******************************************************\n");
     }
 
@@ -61,19 +65,18 @@ public class PrintUtility {
     */
     public void printKitchenTicket() {
 
-    }
+        System.out.println("\n******************************************************");
+        System.out.println("\t\tKITCHEN TICKET");
+        System.out.println("Ticket Number: " + ticketNumber + "\n");
 
-    /*
-        Generates a unique order number, not yet seen in the database
-    */
-    public String generateOrderNumber() {
-        //SELECT MAX()
+        for(int i = 0; i<itemNames.length; i++){
+            System.out.println(itemNames[i]);   
+        }
+        System.out.println();
+        System.out.println("NOTES:");
+        System.out.println(orderNotes);
+        System.out.println("\n******************************************************\n");
+        
 
-        return "00001";
-    }
-
-    //read from database to find last used ticket number
-    public int generateTicketNumber() {
-        return 69;
     }
 }

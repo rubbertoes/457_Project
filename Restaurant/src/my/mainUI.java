@@ -9,6 +9,8 @@ package Restaurant.src.my;
 
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Formatter;
@@ -144,7 +146,7 @@ public class mainUI extends javax.swing.JFrame {
         setResizable(false);
 
         mainBtn1.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn1.setFont(new java.awt.Font("Segoe UI", 1, 7)); // NOI18N
         mainBtn1.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn1.setText(dbu.getSingleMenuItemDataEntry("001", "name"));
         mainBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +156,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn2.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         mainBtn2.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn2.setText(dbu.getSingleMenuItemDataEntry("002", "name"));                                      //change back when bug is fixed
         mainBtn2.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +196,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn6.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn6.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
         mainBtn6.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn6.setText(dbu.getSingleMenuItemDataEntry("006", "name"));
         mainBtn6.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +206,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn7.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn7.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
         mainBtn7.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn7.setText(dbu.getSingleMenuItemDataEntry("007", "name"));
         mainBtn7.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +226,7 @@ public class mainUI extends javax.swing.JFrame {
         });
 
         mainBtn9.setBackground(new java.awt.Color(20, 20, 255));
-        mainBtn9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mainBtn9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         mainBtn9.setForeground(new java.awt.Color(255, 255, 255));
         mainBtn9.setText(dbu.getSingleMenuItemDataEntry("009", "name"));
         mainBtn9.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +254,7 @@ public class mainUI extends javax.swing.JFrame {
 
         paneOrder1.setEditable(false);
         paneOrder1.setAutoscrolls(false);
-        paneOrder1.setMinimumSize(new java.awt.Dimension(74, 400));
+        
         paneOrder1.setPreferredSize(new java.awt.Dimension(74, 70));
         
         jScrollPane3.setViewportView(paneOrder1);
@@ -523,41 +525,57 @@ public class mainUI extends javax.swing.JFrame {
     private void finishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishBtnActionPerformed
         total = 0;
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat formatterForDB = new SimpleDateFormat("yyyy-MM-dd"); 
+        //System.out.println(formatterForDB.format(date)); 
+
         
         try {
            
             String[] arryItems = (paneOrder.getText(0, paneOrder.getStyledDocument().getLength())).split("\n");
             String[] arryPrice = (paneOrder1.getText(0, paneOrder1.getStyledDocument().getLength())).replace("$", "").split("\n");
             
+            DatabaseUtility dbu = new DatabaseUtility();
+            int dbNo = dbu.getNewOrderNum(orderNo); 
+
+            //send order to the DB 
+                //needs: all item name (will be converted to item_num)
+                //       all prices (will be totaled into one double)
+                //       date: may need to create it in the fx as format is differnt for reciepts
+                //       notes
+                //       cashier pin
+                //       rewards_phone number       CANNOT ADD IN CURRENT CONFIGURATION
+                //       ticket number == orderNo in this file
+                //       order number  == dbNo in this file
+
+            dbu.insertOrderInDB(arryItems, arryPrice, formatterForDB.format(date), paneNotes.getText(), emp_pin, orderNo, dbNo);
+
 
             ////////////////CUSTOMER RECEIPT ITEMS
-            //System.out.println(Arrays.toString(arryPrice)); 
-            //System.out.println(Arrays.toString(arryItems));
-            
             //orderNo in this file is actually the ticket number. order number will be generated in the DB utility file
-            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo);
+            PrintUtility pu = new PrintUtility(arryItems, arryPrice, date, orderNo, dbNo, paneNotes.getText());
             pu.printCustomerReceipt();
 
+            ////////////////KITCHEN RECEIPT ITEMS
+            pu.printKitchenTicket();
 
-            //System.out.println(formatter.format(date));
-            //System.out.println(orderNo);
-            //paneTotal.setText(null);
+            //testing fx of get all item num fx
+            //System.out.println(dbu.getListOfItemNum(arryItems));
+
+            //testing date   
+
+            System.out.println( );
+
+            //reset mainUi for next Order
+            orderNo += 1;
             paneTotal.setText("$0.00");
             paneOrder.setText(null);
             paneOrder1.setText(null);
             labelOrderNo1.setText(String.valueOf(orderNo));
-            
-            System.out.println("Order notes:" + paneNotes.getText());
-
             paneNotes.setText(null);
-            ////////////////KITCHEN RECEIPT ITEMS
-            //System.out.println(orderNo);
-            //System.out.println(Arrays.toString(arryItems)); 
-            
-            orderNo += 1;
 
-            //reset
+            //orderNo += 1;
+
+            //reset order num if order reaches 100
             if (orderNo > 100){
                 orderNo = 1;
             }

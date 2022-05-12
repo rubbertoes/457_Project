@@ -252,16 +252,18 @@ public class loginUI extends javax.swing.JFrame {
         
     }
     
-    private void validator(String temp){
-/* 
-    Replace the below lines with 
-    mysql database query for pin validation.
-*/        
+    private void validator(String temp){       
 
         DatabaseUtility dbu = new DatabaseUtility();
 
-        //String pass = "1111";
-        if (dbu.checkValidEmployee(temp)){         //SUCCESS PIN
+        if(dbu.checkValidManager(temp)){                //if manager pin is entered open managerUI
+            super.dispose();
+            managerUI Info = new managerUI(temp);
+            //Info.setTitle("Order");
+            Info.setVisible(true);
+        }
+
+        else if (dbu.checkValidEmployee(temp)){         //else if cashier pin is entered, then open cashier UI
  
             super.dispose();
             mainUI Info = new mainUI(temp);
@@ -276,7 +278,7 @@ public class loginUI extends javax.swing.JFrame {
     Replace the below lines with 
     mysql database query for pin validation.
 */        
-        else{  //FAILED PIN
+        else{  //FAILED PIN, no entry 
             paneLogin.setText(null);
         }
     }
